@@ -10,5 +10,9 @@ namespace EAAA_fitness_lib.Model
     {
         public string UserId { get; set; }
         public virtual ICollection<FitnessClass> Classes { get; set; }
+        public User()
+        {
+            Classes = new List<FitnessClass>();
+        }
     }
 }

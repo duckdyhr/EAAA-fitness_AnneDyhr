@@ -36,7 +36,7 @@ namespace FitnessLib.Migrations
                 new Discipline { Name = "Yoga experts" }
             };
             
-            discipliner.ForEach(x => context.Disciplines.AddOrUpdate(d => new { d.Name}, x));
+            
 
             var users = new List<User>
             {
@@ -62,9 +62,28 @@ namespace FitnessLib.Migrations
                 new Instructor { Name="Inger", Age=21, Adress="Winter street 3, 1000" }
             };
 
+            instructors[0].FitnessDiscipliner.Add(discipliner[0]);
+            instructors[0].FitnessDiscipliner.Add(discipliner[1]);
+            instructors[0].FitnessDiscipliner.Add(discipliner[2]);
+
+            discipliner.ForEach(x => context.Disciplines.AddOrUpdate(d => new { d.Name }, x));
             instructors.ForEach(x => context.Instructors.AddOrUpdate(i => new { Name = i.Name, Adress = i.Adress }, x));
 
             //Indsætter relationer:
+
+            //context.Instructors.Find(1).FitnessDiscipliner.Add(context.Disciplines.Find(1));
+            //context.Instructors.Find(1).FitnessDiscipliner.Add(context.Disciplines.Find(2));
+            //context.Instructors.Find(1).FitnessDiscipliner.Add(context.Disciplines.Find(3));
+
+            //context.Instructors.Find(2).FitnessDiscipliner.Add(context.Disciplines.Find(4) as Discipline);
+            //context.Instructors.Find(2).FitnessDiscipliner.Add(discipliner[1]);
+
+            //context.Instructors.Find(3).FitnessDiscipliner.Add(discipliner[6]);
+            //context.Instructors.Find(3).FitnessDiscipliner.Add(discipliner[7]);
+            //context.Instructors.Find(3).FitnessDiscipliner.Add(discipliner[1]);
+
+            //context.Instructors.Find(4).FitnessDiscipliner.Add(discipliner[2]);
+
 
 
 

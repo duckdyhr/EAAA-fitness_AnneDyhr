@@ -13,9 +13,14 @@ namespace EAAA_fitness_lib.Model
         public virtual Instructor Instructor { get; set; }
         public virtual Discipline Discipline { get; set; }
         public virtual ICollection<User> Users { get; set; }
+
+        public FitnessClass()
+        {
+            Users = new List<User>();
+        }
         public override string ToString()
         {
-            return Id + " " + Instructor;
+            return Id + " " + Instructor.Name;
         }
     }
 

@@ -22,10 +22,10 @@ namespace TestEF
             context.Classes.ToList().ForEach(fc => Console.WriteLine(fc));
 
             Console.WriteLine("\nGyms");
-            context.Gyms.ToList().ForEach(g => Console.WriteLine(g.Location));
+            context.Gyms.ToList().ForEach(g => Console.WriteLine(g.Id + " " + g.Location));
 
             Console.WriteLine("\nInstructors");
-            context.Instructors.ToList().ForEach(i => Console.WriteLine(i.Name));
+            context.Instructors.ToList().ForEach(i => Console.WriteLine(i.Id + " " + i.Name + " " + i.FitnessDiscipliner.Count));
 
             Console.WriteLine("\nUsers");
             context.Users.ToList().ForEach(u => Console.WriteLine(u.UserId + " " + u.Name));

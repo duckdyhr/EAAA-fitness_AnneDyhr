@@ -3,7 +3,7 @@ namespace FitnessLib.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class nyDB : DbMigration
+    public partial class Nydb : DbMigration
     {
         public override void Up()
         {
@@ -12,14 +12,14 @@ namespace FitnessLib.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Instructor_Id = c.Int(),
                         Discipline_Id = c.Int(),
+                        Instructor_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Instructors", t => t.Instructor_Id)
                 .ForeignKey("dbo.Disciplines", t => t.Discipline_Id)
-                .Index(t => t.Instructor_Id)
-                .Index(t => t.Discipline_Id);
+                .ForeignKey("dbo.Instructors", t => t.Instructor_Id)
+                .Index(t => t.Discipline_Id)
+                .Index(t => t.Instructor_Id);
             
             CreateTable(
                 "dbo.Disciplines",
@@ -93,16 +93,16 @@ namespace FitnessLib.Migrations
         {
             DropForeignKey("dbo.UserFitnessClasses", "FitnessClass_Id", "dbo.FitnessClasses");
             DropForeignKey("dbo.UserFitnessClasses", "User_UserId", "dbo.Users");
-            DropForeignKey("dbo.FitnessClasses", "Discipline_Id", "dbo.Disciplines");
             DropForeignKey("dbo.InstructorDisciplines", "Discipline_Id", "dbo.Disciplines");
             DropForeignKey("dbo.InstructorDisciplines", "Instructor_Id", "dbo.Instructors");
             DropForeignKey("dbo.FitnessClasses", "Instructor_Id", "dbo.Instructors");
+            DropForeignKey("dbo.FitnessClasses", "Discipline_Id", "dbo.Disciplines");
             DropIndex("dbo.UserFitnessClasses", new[] { "FitnessClass_Id" });
             DropIndex("dbo.UserFitnessClasses", new[] { "User_UserId" });
             DropIndex("dbo.InstructorDisciplines", new[] { "Discipline_Id" });
             DropIndex("dbo.InstructorDisciplines", new[] { "Instructor_Id" });
-            DropIndex("dbo.FitnessClasses", new[] { "Discipline_Id" });
             DropIndex("dbo.FitnessClasses", new[] { "Instructor_Id" });
+            DropIndex("dbo.FitnessClasses", new[] { "Discipline_Id" });
             DropTable("dbo.UserFitnessClasses");
             DropTable("dbo.InstructorDisciplines");
             DropTable("dbo.Gyms");

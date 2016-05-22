@@ -64,13 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201605221407006_nyDB.cs" />
-    <Compile Include="Migrations\201605221407006_nyDB.Designer.cs">
-      <DependentUpon>201605221407006_nyDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605221431507_DisciplineNadaInstructors.cs" />
-    <Compile Include="Migrations\201605221431507_DisciplineNadaInstructors.Designer.cs">
-      <DependentUpon>201605221431507_DisciplineNadaInstructors.cs</DependentUpon>
+    <Compile Include="Migrations\201605221720334_Nydb.cs" />
+    <Compile Include="Migrations\201605221720334_Nydb.Designer.cs">
+      <DependentUpon>201605221720334_Nydb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Discipline.cs" />
@@ -99,6 +95,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605221720334_Nydb.resx">
+      <DependentUpon>201605221720334_Nydb.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Data\FitnessDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -106,14 +107,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>FitnessDb.mdf</DependentUpon>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605221407006_nyDB.resx">
-      <DependentUpon>201605221407006_nyDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605221431507_DisciplineNadaInstructors.resx">
-      <DependentUpon>201605221431507_DisciplineNadaInstructors.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

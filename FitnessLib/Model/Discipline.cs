@@ -11,6 +11,8 @@ namespace EAAA_fitness_lib.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }   
+        public string Description { get; set; }
+        public virtual ICollection<Instructor> Instructors { get; set; }
+        public virtual ICollection<FitnessClass> Classes { get; set; }
     }
 }

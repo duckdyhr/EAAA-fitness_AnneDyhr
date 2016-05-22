@@ -14,10 +14,17 @@ namespace EAAA_fitness_lib.Storage
         {
 
         }
-        public DbSet<FitnessClass> Classes { get; set; }
-        public DbSet<Discipline> Disciplines { get; set; }
-        public DbSet<Gym> Gyms { get; set; }
-        public DbSet<Instructor> Instructors { get; set; }
-        public DbSet<User> Users { get; set; }
+        //virtual for at opnaa lazy loading
+        public virtual DbSet<FitnessClass> Classes { get; set; }
+        public virtual  DbSet<Discipline> Disciplines { get; set; }
+        public virtual DbSet<Gym> Gyms { get; set; }
+        public virtual DbSet<Instructor> Instructors { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //insert fluent api her for at lave enkeltrettet relationer mellem instructor-discipline-fitnessclass
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
