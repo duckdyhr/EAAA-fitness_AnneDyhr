@@ -1,6 +1,7 @@
 namespace FitnessLib.Migrations
 {
     using EAAA_fitness_lib.Model;
+    using Model;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -37,15 +38,15 @@ namespace FitnessLib.Migrations
             
             var users = new List<User>
             {
+                new User { UserId="lg", Name="Lene Godte" },
+                new User { UserId="aa", Name="Anne Andersen" },
+                new User { UserId="mr", Name="Mette Rosen" },
+                new User { UserId="ab", Name="Anna Banana" },
+                new User { UserId="ml", Name="Maria Lade" },
                 new User { UserId="ad", Name="Anne Dyhr"},
                 new User { UserId="jd", Name="John Doe"},
                 new User { UserId="jw", Name="Jane Wilson" },
-                new User { UserId="bh", Name="Bent Hansen" }, 
-                new User { UserId="aa", Name="Anne Andersen" },
-                new User { UserId="lg", Name="Lene Godte" },
-                new User { UserId="mr", Name="Mette Rosen" },
-                new User { UserId="ml", Name="Maria Lade" },
-                new User { UserId="ab", Name="Anna Banana" }
+                new User { UserId="bh", Name="Bent Hansen" } 
             };
 
             var instructors = new List<Instructor>
@@ -55,6 +56,21 @@ namespace FitnessLib.Migrations
                 new Instructor { Name="Irene", Age=32, Adress="Spring street 12, 1000" },
                 new Instructor { Name="Linda", Age=20, Adress="Winter street 1, 1000" },
                 new Instructor { Name="Inger", Age=21, Adress="Winter street 3, 1000" }
+            };
+
+            var classes = new List<FitnessClass>
+            {
+                new FitnessClass { Id= 1, Instructor = instructors[0], Discipline = discipliner[0], Start=new DateTime(2016, 6, 20, 8, 0, 0), Duration=60, Gym = gyms[0] },
+                new FitnessClass { Id= 2, Instructor = instructors[0], Discipline = discipliner[0], Start=new DateTime(2016, 6, 20, 9, 30, 0), Duration = 90, Gym = gyms[0] },
+                new FitnessClass { Id= 3, Instructor = instructors[0], Discipline = discipliner[1], Start= new DateTime(2016, 6, 20, 13, 0, 0), Duration = 60, Gym = gyms[1] },
+                new FitnessClass { Id= 4, Instructor = instructors[0], Discipline = discipliner[2], Start=new DateTime(2016, 6, 20, 15, 45, 0), Duration = 45, Gym=gyms[0] },
+                new FitnessClass { Id= 5, Instructor = instructors[2], Discipline = discipliner[2], Start= new DateTime(2016, 6, 20, 8, 0, 0), Duration=60, Gym=gyms[2] },
+                new FitnessClass { Id= 6, Instructor = instructors[2], Discipline = discipliner[3] },
+                new FitnessClass { Id= 7, Instructor = instructors[2], Discipline = discipliner[3] },
+                new FitnessClass { Id= 8, Instructor = instructors[2], Discipline = discipliner[3] },
+                new FitnessClass { Id= 9, Instructor = instructors[3], Discipline = discipliner[5] },
+                new FitnessClass { Id= 10, Instructor = instructors[3], Discipline = discipliner[6] },
+                new FitnessClass { Id= 11, Instructor = instructors[3], Discipline = discipliner[7] }
             };
             //Relationer:
 
@@ -74,12 +90,35 @@ namespace FitnessLib.Migrations
             instructors[3].FitnessDiscipliner.Add(discipliner[6]);
             instructors[3].FitnessDiscipliner.Add(discipliner[7]);
             //Inger
-            
+            //...
+
+            classes[0].Users.Add(users[0]);
+            classes[0].Users.Add(users[1]);
+            classes[0].Users.Add(users[2]);
+            classes[0].Users.Add(users[3]);
+            classes[0].Users.Add(users[4]);
+            classes[0].Users.Add(users[5]);
+
+            classes[1].Users.Add(users[0]);
+            classes[1].Users.Add(users[1]);
+            classes[1].Users.Add(users[2]);
+            classes[1].Users.Add(users[3]);
+            classes[1].Users.Add(users[4]);
+            classes[1].Users.Add(users[5]);
+
+            classes[2].Users.Add(users[3]);
+            classes[2].Users.Add(users[4]);
+            classes[2].Users.Add(users[5]);
+
+            classes[0].Users.Add(users[0]);
+            classes[0].Users.Add(users[1]);
+            classes[0].Users.Add(users[2]);
 
             gyms.ForEach(x => context.Gyms.AddOrUpdate(g => new { g.Location }, x));
             discipliner.ForEach(x => context.Disciplines.AddOrUpdate(d => new { d.Name }, x));
             instructors.ForEach(x => context.Instructors.AddOrUpdate(i => new { Name = i.Name, Adress = i.Adress }, x));
             users.ForEach(x => context.Users.AddOrUpdate(u => u.UserId, x));
+            classes.ForEach(x => context.Classes.AddOrUpdate(fc => fc.Id, x));
             
             //  This method will be called after migrating to the latest version.
 

@@ -9,7 +9,7 @@ namespace EAAA_fitness_lib.Model
 {
     public class Instructor : Person
     {
-        public int Id { get; set; }
+        public int InstructorId { get; set; }
         public int Age { get; set; }
         public string Adress { get; set; } //som struct?
         public Instructor()

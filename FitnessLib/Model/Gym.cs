@@ -11,5 +11,9 @@ namespace EAAA_fitness_lib.Model
         public int Id { get; set; }
         public string Location { get; set; }
         public int MaxCapacity { get; set; }
+        public override string ToString()
+        {
+            return Location + " max: " + MaxCapacity;
+        }
     }
 }

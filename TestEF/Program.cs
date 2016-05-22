@@ -17,15 +17,15 @@ namespace TestEF
             context.Disciplines.ToList()
                 .ForEach(d => Console.WriteLine(
                     d.Id + " " + d.Name));
-
+            //Count metoden undermineres af Lazy loading, så 
             Console.WriteLine("\nFitnessClasses");
-            context.Classes.ToList().ForEach(fc => Console.WriteLine(fc));
+            context.Classes.ToList().ForEach(fc => Console.WriteLine(fc + "\n\ttime: " + fc.Start.ToString() + "\n\tgym: " + fc.Gym + "\n\tusers: " + fc.Users?.Count));
 
             Console.WriteLine("\nGyms");
             context.Gyms.ToList().ForEach(g => Console.WriteLine(g.Id + " " + g.Location));
 
             Console.WriteLine("\nInstructors");
-            context.Instructors.ToList().ForEach(i => Console.WriteLine(i.Id + " " + i.Name + " " + i.FitnessDiscipliner.Count));
+            context.Instructors.ToList().ForEach(i => Console.WriteLine(i.InstructorId + " " + i.Name + " \n\tdiscipliner:" + i.FitnessDiscipliner.Count + " \n\tclasses:" + i.Classes.Count));
 
             Console.WriteLine("\nUsers");
             context.Users.ToList().ForEach(u => Console.WriteLine(u.UserId + " " + u.Name));

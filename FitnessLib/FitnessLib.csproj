@@ -64,9 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201605221753168_NewDb-again.cs" />
-    <Compile Include="Migrations\201605221753168_NewDb-again.Designer.cs">
-      <DependentUpon>201605221753168_NewDb-again.cs</DependentUpon>
+    <Compile Include="Migrations\201605221952190_nydb5.cs" />
+    <Compile Include="Migrations\201605221952190_nydb5.Designer.cs">
+      <DependentUpon>201605221952190_nydb5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Discipline.cs" />
@@ -74,6 +74,7 @@
     <Compile Include="Model\Gym.cs" />
     <Compile Include="Model\Instructor.cs" />
     <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\TimeOfClass.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\FitnessContext.cs" />
@@ -104,8 +105,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605221753168_NewDb-again.resx">
-      <DependentUpon>201605221753168_NewDb-again.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605221952190_nydb5.resx">
+      <DependentUpon>201605221952190_nydb5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
