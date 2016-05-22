@@ -3,7 +3,7 @@ namespace FitnessLib.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Nydb : DbMigration
+    public partial class NewDbagain : DbMigration
     {
         public override void Up()
         {

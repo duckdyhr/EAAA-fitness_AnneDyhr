@@ -64,9 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201605221720334_Nydb.cs" />
-    <Compile Include="Migrations\201605221720334_Nydb.Designer.cs">
-      <DependentUpon>201605221720334_Nydb.cs</DependentUpon>
+    <Compile Include="Migrations\201605221753168_NewDb-again.cs" />
+    <Compile Include="Migrations\201605221753168_NewDb-again.Designer.cs">
+      <DependentUpon>201605221753168_NewDb-again.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Discipline.cs" />
@@ -95,11 +95,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605221720334_Nydb.resx">
-      <DependentUpon>201605221720334_Nydb.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Data\FitnessDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -107,6 +102,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>FitnessDb.mdf</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605221753168_NewDb-again.resx">
+      <DependentUpon>201605221753168_NewDb-again.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

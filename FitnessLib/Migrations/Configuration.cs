@@ -22,7 +22,6 @@ namespace FitnessLib.Migrations
                 new Gym { Location = "A2", MaxCapacity=10 },
                 new Gym { Location = "B1", MaxCapacity=5 }
             };
-            gyms.ForEach(x => context.Gyms.AddOrUpdate(g => new { g.Location }, x));
 
             var discipliner = new List<Discipline>
             {
@@ -36,8 +35,6 @@ namespace FitnessLib.Migrations
                 new Discipline { Name = "Yoga experts" }
             };
             
-            
-
             var users = new List<User>
             {
                 new User { UserId="ad", Name="Anne Dyhr"},
@@ -51,8 +48,6 @@ namespace FitnessLib.Migrations
                 new User { UserId="ab", Name="Anna Banana" }
             };
 
-            users.ForEach(x => context.Users.AddOrUpdate(u => u.UserId, x));
-
             var instructors = new List<Instructor>
             {
                 new Instructor { Name="Louise", Age=59, Adress="Summmer street 2, 1000"},
@@ -61,38 +56,31 @@ namespace FitnessLib.Migrations
                 new Instructor { Name="Linda", Age=20, Adress="Winter street 1, 1000" },
                 new Instructor { Name="Inger", Age=21, Adress="Winter street 3, 1000" }
             };
+            //Relationer:
 
+            //Louise
             instructors[0].FitnessDiscipliner.Add(discipliner[0]);
             instructors[0].FitnessDiscipliner.Add(discipliner[1]);
             instructors[0].FitnessDiscipliner.Add(discipliner[2]);
+            //Benny
+            instructors[1].FitnessDiscipliner.Add(discipliner[0]);
+            instructors[1].FitnessDiscipliner.Add(discipliner[1]);
+            //Irene
+            instructors[2].FitnessDiscipliner.Add(discipliner[2]);
+            instructors[2].FitnessDiscipliner.Add(discipliner[3]);
+            instructors[2].FitnessDiscipliner.Add(discipliner[4]);
+            //Linda
+            instructors[3].FitnessDiscipliner.Add(discipliner[5]);
+            instructors[3].FitnessDiscipliner.Add(discipliner[6]);
+            instructors[3].FitnessDiscipliner.Add(discipliner[7]);
+            //Inger
+            
 
+            gyms.ForEach(x => context.Gyms.AddOrUpdate(g => new { g.Location }, x));
             discipliner.ForEach(x => context.Disciplines.AddOrUpdate(d => new { d.Name }, x));
             instructors.ForEach(x => context.Instructors.AddOrUpdate(i => new { Name = i.Name, Adress = i.Adress }, x));
-
-            //Indsætter relationer:
-
-            //context.Instructors.Find(1).FitnessDiscipliner.Add(context.Disciplines.Find(1));
-            //context.Instructors.Find(1).FitnessDiscipliner.Add(context.Disciplines.Find(2));
-            //context.Instructors.Find(1).FitnessDiscipliner.Add(context.Disciplines.Find(3));
-
-            //context.Instructors.Find(2).FitnessDiscipliner.Add(context.Disciplines.Find(4) as Discipline);
-            //context.Instructors.Find(2).FitnessDiscipliner.Add(discipliner[1]);
-
-            //context.Instructors.Find(3).FitnessDiscipliner.Add(discipliner[6]);
-            //context.Instructors.Find(3).FitnessDiscipliner.Add(discipliner[7]);
-            //context.Instructors.Find(3).FitnessDiscipliner.Add(discipliner[1]);
-
-            //context.Instructors.Find(4).FitnessDiscipliner.Add(discipliner[2]);
-
-
-
-
-
-
-
-
-
-
+            users.ForEach(x => context.Users.AddOrUpdate(u => u.UserId, x));
+            
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

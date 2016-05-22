@@ -21,9 +21,9 @@ namespace EAAA_fitness_lib.Storage
         public virtual DbSet<Instructor> Instructors { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
+        //Kod fluent api her for at lave enkeltrettet relationer mellem instructor-discipline-fitnessclass, frem for Collections i Disciplin klassen
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //insert fluent api her for at lave enkeltrettet relationer mellem instructor-discipline-fitnessclass
             base.OnModelCreating(modelBuilder);
         }
     }
