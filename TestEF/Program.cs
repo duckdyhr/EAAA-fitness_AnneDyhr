@@ -13,15 +13,22 @@ namespace TestEF
         static void Main(string[] args)
         {
             FitnessContext context = new FitnessContext();
-            context.Disciplines.Add(new Discipline { Name="Yoga"});
-            context.Disciplines.Add(new Discipline { Name = "Spinning" });
-            context.Disciplines.Add(new Discipline { Name = "Kickboxing" });
-
-            context.SaveChanges();
-
+            Console.WriteLine("Disciplines;");
             context.Disciplines.ToList()
                 .ForEach(d => Console.WriteLine(
                     d.Id + " " + d.Name));
+
+            Console.WriteLine("\nFitnessClasses");
+            context.Classes.ToList().ForEach(fc => Console.WriteLine(fc));
+
+            Console.WriteLine("\nGyms");
+            context.Gyms.ToList().ForEach(g => Console.WriteLine(g.Location));
+
+            Console.WriteLine("\nInstructors");
+            context.Instructors.ToList().ForEach(i => Console.WriteLine(i.Name));
+
+            Console.WriteLine("\nUsers");
+            context.Users.ToList().ForEach(u => Console.WriteLine(u.UserId + " " + u.Name));
 
             Console.Read();
         }

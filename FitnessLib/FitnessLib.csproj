@@ -64,9 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201605221226122_Virtuals.cs" />
-    <Compile Include="Migrations\201605221226122_Virtuals.Designer.cs">
-      <DependentUpon>201605221226122_Virtuals.cs</DependentUpon>
+    <Compile Include="Migrations\201605221407006_nyDB.cs" />
+    <Compile Include="Migrations\201605221407006_nyDB.Designer.cs">
+      <DependentUpon>201605221407006_nyDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605221431507_DisciplineNadaInstructors.cs" />
+    <Compile Include="Migrations\201605221431507_DisciplineNadaInstructors.Designer.cs">
+      <DependentUpon>201605221431507_DisciplineNadaInstructors.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Discipline.cs" />
@@ -83,15 +87,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\FitnessDb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\FitnessDb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>FitnessDb.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
@@ -104,8 +99,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605221226122_Virtuals.resx">
-      <DependentUpon>201605221226122_Virtuals.cs</DependentUpon>
+    <Content Include="Data\FitnessDb.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\FitnessDb_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>FitnessDb.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605221407006_nyDB.resx">
+      <DependentUpon>201605221407006_nyDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605221431507_DisciplineNadaInstructors.resx">
+      <DependentUpon>201605221431507_DisciplineNadaInstructors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
