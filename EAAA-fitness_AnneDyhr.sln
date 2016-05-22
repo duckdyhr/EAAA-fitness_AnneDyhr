@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-app", "WPF-app\WPF-app.csproj", "{CEFA8440-7EB7-4EB7-8AC2-25898B39A15E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAAA-fitness_lib", "EAAA-fitness_lib\EAAA-fitness_lib.csproj", "{299B6A90-A067-46B4-A536-2C19473C0A41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CEFA8440-7EB7-4EB7-8AC2-25898B39A15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEFA8440-7EB7-4EB7-8AC2-25898B39A15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEFA8440-7EB7-4EB7-8AC2-25898B39A15E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{299B6A90-A067-46B4-A536-2C19473C0A41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{299B6A90-A067-46B4-A536-2C19473C0A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{299B6A90-A067-46B4-A536-2C19473C0A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{299B6A90-A067-46B4-A536-2C19473C0A41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
