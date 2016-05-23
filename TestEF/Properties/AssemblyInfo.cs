@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EAAA-fitness_lib")]
+[assembly: AssemblyTitle("TestEF")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EAAA-fitness_lib")]
+[assembly: AssemblyProduct("TestEF")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("299b6a90-a067-46b4-a536-2c19473c0a41")]
+[assembly: Guid("688bb725-e3b2-40c4-8c38-31f9830f5b6c")]
 
 // Version information for an assembly consists of the following four values:
 //

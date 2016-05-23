@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAAA_fitness_lib
+namespace EAAA_fitness_lib.Model
 {
-    public class Class1
+
+    public class Person
     {
+        public string Name { get; set; }
     }
 }
