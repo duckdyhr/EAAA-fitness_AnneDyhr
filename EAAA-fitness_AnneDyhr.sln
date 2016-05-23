@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-app", "WPF-app\WPF-app.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessLib", "FitnessLib\FitnessLib.csproj", "{44034946-A24A-429A-84AF-089E8EB46839}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEF", "TestEF\TestEF.csproj", "{688BB725-E3B2-40C4-8C38-31F9830F5B6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessLib_Test", "TestEF\FitnessLib_Test.csproj", "{688BB725-E3B2-40C4-8C38-31F9830F5B6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
