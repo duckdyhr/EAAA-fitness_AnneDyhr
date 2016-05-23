@@ -64,9 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201605221952190_nydb5.cs" />
-    <Compile Include="Migrations\201605221952190_nydb5.Designer.cs">
-      <DependentUpon>201605221952190_nydb5.cs</DependentUpon>
+    <Compile Include="Migrations\201605231059501_nybranch.cs" />
+    <Compile Include="Migrations\201605231059501_nybranch.Designer.cs">
+      <DependentUpon>201605231059501_nybranch.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Discipline.cs" />
@@ -80,7 +80,9 @@
     <Compile Include="Storage\FitnessContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,8 +107,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605221952190_nydb5.resx">
-      <DependentUpon>201605221952190_nydb5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605231059501_nybranch.resx">
+      <DependentUpon>201605231059501_nybranch.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

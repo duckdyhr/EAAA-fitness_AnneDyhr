@@ -1,0 +1,13 @@
+﻿@model MVC_FitnessUsers.Models.ClassBookingViewModel
+
+<h1>TestController</h1>
+@Model.LblTest
+
+<hr/>
+<h2>Holdoversigt</h2>
+<ul>
+    @foreach(var c in Model.Classes)
+    {
+        <li>@c.Id : @c.Discipline.Name</li>
+    }
+</ul>
