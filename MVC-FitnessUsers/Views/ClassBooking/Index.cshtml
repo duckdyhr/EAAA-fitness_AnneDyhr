@@ -15,17 +15,17 @@ else
 }
 <hr/>
 <h3>Vælg søgekriterier</h3>
-@using (Html.BeginForm())
+@using (Html.BeginForm("FilterClasses", "ClassBooking"))
 { 
             @*Strongly typed. Binder elementers value til en property op ViewModel. Giver hvert element en Bootstrap style class med*@
     <div class="row">
         <div class="col-md-3 form-group">
             @Html.LabelFor(m => m.Disciplines) <br/>
-            @Html.DropDownListFor(m => m.SelectedDiscipline, new SelectList(Model.Disciplines), "Intet valgt", new { @class="form-control"})
+            @Html.DropDownListFor(m => m.SelectedDiscipline, new SelectList(Model.Disciplines.Select(d=> d.Name)), "Ikke valgt", new { @class="form-control"})
         </div>
         <div class="col-md-3 form-group">
             @Html.LabelFor(m=> m.Instructors)
-            @Html.DropDownListFor(m => m.SelectedInstructor, new SelectList(Model.Instructors), "Ingen valgt", new { @class="form-control"})
+            @Html.DropDownListFor(m => m.SelectedInstructor, new SelectList(Model.Instructors.Select(i => i.Name)), "Ikke valgt", new { @class="form-control"})
             <br/>
         </div>
         <div class="col-md-3 form-group">

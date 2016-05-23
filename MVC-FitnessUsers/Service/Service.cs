@@ -44,5 +44,22 @@ namespace MVC_FitnessUsers.Service
             model.User = null;
             return model;
         }
+
+        public ClassBookingViewModel FilterViewModel(ClassBookingViewModel model)
+        {
+            var sDisciplin = model.SelectedDiscipline;
+            var sInstructor = model.SelectedInstructor;
+            var sDate = model.SelectedDate;
+
+            var result = new List<FitnessClass>();
+            foreach (var fclass in db.Classes.Where(fc => fc.Id == 1))
+            {
+                result.Add(fclass);
+            }
+
+            model.Classes = result;
+
+            return model;
+        }
     }
 }
