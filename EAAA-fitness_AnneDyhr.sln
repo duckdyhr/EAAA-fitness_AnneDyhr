@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-app", "WPF-app\WPF-app.csproj", "{CEFA8440-7EB7-4EB7-8AC2-25898B39A15E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessLib", "FitnessLib\FitnessLib.csproj", "{44034946-A24A-429A-84AF-089E8EB46839}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessLib_Test", "TestEF\FitnessLib_Test.csproj", "{688BB725-E3B2-40C4-8C38-31F9830F5B6C}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCFull-FitnessUsers", "Fit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC-FitnessUsers", "MVC-FitnessUsers\MVC-FitnessUsers.csproj", "{7D158D70-9340-46B9-8EDB-3ADC0090B797}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-FitnessAdmin", "WPF-FitnessAdmin\WPF-FitnessAdmin.csproj", "{C57931F3-8812-4CFB-B5FF-8BFED2E06FD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CEFA8440-7EB7-4EB7-8AC2-25898B39A15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEFA8440-7EB7-4EB7-8AC2-25898B39A15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEFA8440-7EB7-4EB7-8AC2-25898B39A15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEFA8440-7EB7-4EB7-8AC2-25898B39A15E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{44034946-A24A-429A-84AF-089E8EB46839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{44034946-A24A-429A-84AF-089E8EB46839}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44034946-A24A-429A-84AF-089E8EB46839}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{7D158D70-9340-46B9-8EDB-3ADC0090B797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D158D70-9340-46B9-8EDB-3ADC0090B797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D158D70-9340-46B9-8EDB-3ADC0090B797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57931F3-8812-4CFB-B5FF-8BFED2E06FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57931F3-8812-4CFB-B5FF-8BFED2E06FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57931F3-8812-4CFB-B5FF-8BFED2E06FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57931F3-8812-4CFB-B5FF-8BFED2E06FD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
