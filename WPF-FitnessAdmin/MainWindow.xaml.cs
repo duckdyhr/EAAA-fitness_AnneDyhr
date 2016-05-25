@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_FitnessAdmin.model;
 
 namespace WPF_FitnessAdmin
 {
@@ -20,9 +21,24 @@ namespace WPF_FitnessAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Service.Service service;
+        private SessionViewModel model;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            service = Service.Service.Instance;
+            model = service.GetFreshViewModel();
+            root.DataContext = model;
+            test.Content = "Classes.size() " + model.Classes.Count;
+        }
+        private void SetBindings()
+        {
+            
         }
     }
 }

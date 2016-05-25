@@ -26,7 +26,7 @@ namespace MVC_FitnessUsers.Service
                 return _instance;
             }
         }
-
+        //Returner fuld ClassBookingViewModel i stedet for List<FitnessClass>
         public List<FitnessClass> GetAllFitnessClasses()
         {
             var classes = db.Classes.ToList();
