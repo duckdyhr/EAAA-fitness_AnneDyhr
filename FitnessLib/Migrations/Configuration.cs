@@ -51,11 +51,11 @@ namespace FitnessLib.Migrations
 
             var instructors = new List<Instructor>
             {
-                new Instructor { Name="Louise", Age=59, Adress="Summmer street 2, 1000"},
-                new Instructor { Name="Benny", Age=25, Adress="Fall street 42, 1000" },
-                new Instructor { Name="Irene", Age=32, Adress="Spring street 12, 1000" },
                 new Instructor { Name="Linda", Age=20, Adress="Winter street 1, 1000" },
-                new Instructor { Name="Inger", Age=21, Adress="Winter street 3, 1000" }
+                new Instructor { Name="Louise", Age=59, Adress="Summmer street 2, 1000"},
+                new Instructor { Name="Inger", Age=21, Adress="Winter street 3, 1000" },
+                new Instructor { Name="Irene", Age=32, Adress="Spring street 12, 1000" },
+                new Instructor { Name="Benny", Age=25, Adress="Fall street 42, 1000" }
             };
 
             var classes = new List<FitnessClass>
@@ -65,31 +65,31 @@ namespace FitnessLib.Migrations
                 new FitnessClass { Id= 3, Instructor = instructors[0], Discipline = discipliner[1], Start= new DateTime(2016, 6, 20, 13, 0, 0), Duration = 60, Gym = gyms[1] },
                 new FitnessClass { Id= 4, Instructor = instructors[0], Discipline = discipliner[2], Start=new DateTime(2016, 6, 20, 15, 45, 0), Duration = 45, Gym=gyms[0] },
                 new FitnessClass { Id= 5, Instructor = instructors[2], Discipline = discipliner[2], Start= new DateTime(2016, 6, 20, 8, 0, 0), Duration=60, Gym=gyms[2] },
-                new FitnessClass { Id= 6, Instructor = instructors[2], Discipline = discipliner[3] },
-                new FitnessClass { Id= 7, Instructor = instructors[2], Discipline = discipliner[3] },
-                new FitnessClass { Id= 8, Instructor = instructors[2], Discipline = discipliner[3] },
-                new FitnessClass { Id= 9, Instructor = instructors[3], Discipline = discipliner[5] },
-                new FitnessClass { Id= 10, Instructor = instructors[3], Discipline = discipliner[6] },
-                new FitnessClass { Id= 11, Instructor = instructors[3], Discipline = discipliner[7] }
+                new FitnessClass { Id= 6, Instructor = instructors[2], Discipline = discipliner[3], Start= new DateTime(2016, 6, 21, 8, 0, 0), Duration=60, Gym=gyms[0]},
+                new FitnessClass { Id= 7, Instructor = instructors[2], Discipline = discipliner[3], Start = new DateTime(2016, 6, 21, 10, 0, 0), Duration=60, Gym=gyms[0] },
+                new FitnessClass { Id= 8, Instructor = instructors[2], Discipline = discipliner[3], Start = new DateTime(2016, 6, 21, 12, 0, 0), Duration=60, Gym=gyms[0] },
+                new FitnessClass { Id= 9, Instructor = instructors[3], Discipline = discipliner[5], Start = new DateTime(2016, 6, 21, 8, 0, 0), Duration=60, Gym=gyms[1] },
+                new FitnessClass { Id= 10, Instructor = instructors[3], Discipline = discipliner[6], Start = new DateTime(2016, 6, 21, 9, 30, 0), Duration=90, Gym=gyms[1] },
+                new FitnessClass { Id= 11, Instructor = instructors[3], Discipline = discipliner[7], Start= new DateTime(2016, 6, 21, 13, 0, 0), Duration=45, Gym=gyms[2] }
             };
             //Relationer:
 
-            //Louise
+            //Linda
             instructors[0].FitnessDiscipliner.Add(discipliner[0]);
             instructors[0].FitnessDiscipliner.Add(discipliner[1]);
             instructors[0].FitnessDiscipliner.Add(discipliner[2]);
-            //Benny
+            //Louise
             instructors[1].FitnessDiscipliner.Add(discipliner[0]);
             instructors[1].FitnessDiscipliner.Add(discipliner[1]);
-            //Irene
+            //Inger
             instructors[2].FitnessDiscipliner.Add(discipliner[2]);
             instructors[2].FitnessDiscipliner.Add(discipliner[3]);
             instructors[2].FitnessDiscipliner.Add(discipliner[4]);
-            //Linda
+            //Irene
             instructors[3].FitnessDiscipliner.Add(discipliner[5]);
             instructors[3].FitnessDiscipliner.Add(discipliner[6]);
             instructors[3].FitnessDiscipliner.Add(discipliner[7]);
-            //Inger
+            //Benny
             //...
 
             classes[0].Users.Add(users[0]);

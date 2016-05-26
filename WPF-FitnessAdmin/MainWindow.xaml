@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_FitnessAdmin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
-    <Grid Name="root" ShowGridLines="True">
+        Title="MainWindow" Height="500" Width="600" Loaded="Window_Loaded">
+    <Grid x:Name="root" ShowGridLines="False">
         <Grid.Resources>
             <DataTemplate x:Key="dateTemplate">
-
+                
             </DataTemplate>
         </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>   
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -26,25 +26,43 @@
             <GroupBox.Header>
                 <Label Content="Discipliner"/>
             </GroupBox.Header>
-            <StackPanel Orientation="Vertical">
-                <ListBox x:Name="lboxDiscipliner" Height="Auto" ItemsSource="{Binding Path=Disciplines}" DisplayMemberPath="Name"/>
-                <StackPanel Orientation="Horizontal">
-                    <Button Name="btnAddDiscipline">Ny</Button>
-                    <Button Name="btnDeleteDiscpline">Slet</Button>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            
+            
+                <ListBox x:Name="lboxDiscipliner" Grid.Column="0" Grid.Row="0" Height="150" ItemsSource="{Binding Path=Disciplines}" DisplayMemberPath="Name"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                    <Button x:Name="btnAddDiscipline">Ny</Button>
+                    <Button x:Name="btnDeleteDiscpline">Slet</Button>
                 </StackPanel>
-            </StackPanel>
+            </Grid>
         </GroupBox>
         <GroupBox Grid.Column="1" Grid.Row="0">
             <GroupBox.Header>
                 <Label Content="Instruktører"/>
             </GroupBox.Header>
-            <StackPanel Orientation="Vertical">
-                <ListBox x:Name="lboxInstructors" Height="Auto" ItemsSource="{Binding Path=Instructors}" DisplayMemberPath="Name"/>
-                <StackPanel Orientation="Horizontal">
-                    <Button Name="btnAddInstructor">Ny</Button>
-                    <Button Name="btnDeleteInstructor">Slet</Button>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <ListBox x:Name="lboxInstructors" Grid.Column="0" Grid.Row="0" Height="150" ItemsSource="{Binding Path=Instructors}" DisplayMemberPath="Name"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                    <Button x:Name="btnAddInstructor" Click="btnAddInstructor_Click">Ny</Button>
+                    <Button x:Name="btnDeleteInstructor" Click="btnDeleteInstructor_Click">Slet</Button>
+                    <Button x:Name="btnEditInstructor" Click="btnEditInstructor_Click">Rediger</Button>
                 </StackPanel>
-            </StackPanel>
+            </Grid>
         </GroupBox>
         
         <GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
@@ -62,9 +80,42 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Content="Filtrer?" Grid.Column="0" Grid.Row="0"/>
-                <DataGrid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Height="200" Name="dgridClasses" ItemsSource="{Binding Path=Classes}" IsReadOnly="True">
+                <DataGrid x:Name="dgrdClasses" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Height="200"
+                          ItemsSource="{Binding Path=Classes}" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Dato">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Start, StringFormat={}{0:dd MMM yyyy}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Tidspunkt">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Start, StringFormat= {}{0:HH:mm}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Varighed" Binding="{Binding Path=Duration}"></DataGridTextColumn>
+                        <DataGridTemplateColumn Header="Disciplin">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Discipline.Name}" ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Instruktør" Binding="{Binding Path=Instructor.Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Sal" Binding="{Binding Path=Gym.Location}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Antal tilmeldte" Binding="{Binding Path=Users.Count}"></DataGridTextColumn>
+                    </DataGrid.Columns>
                     
                 </DataGrid>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                    <Button x:Name="btnAddClass">Ny</Button>
+                    <Button x:Name="btnDeleteClass">Slet</Button>
+                    <Button x:Name="btnEditClass" Click="btnEditClass_Click">Rediger</Button>
+                </StackPanel>
             </Grid>
         </GroupBox>
         <Label Name="test" Grid.Column="0" Grid.Row="2" Content="Testing..."/>

@@ -7,13 +7,13 @@ namespace FitnessLib.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class nybranch : IMigrationMetadata
+    public sealed partial class nydb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(nybranch));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(nydb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605231059501_nybranch"; }
+            get { return "201605251424368_nydb"; }
         }
         
         string IMigrationMetadata.Source

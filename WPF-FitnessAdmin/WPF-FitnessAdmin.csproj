@@ -67,6 +67,12 @@
     <Compile Include="converters\TimeConverter.cs" />
     <Compile Include="model\SessionViewModel.cs" />
     <Compile Include="Service\Service.cs" />
+    <Compile Include="subwindows\FitnessClassCRUD.xaml.cs">
+      <DependentUpon>FitnessClassCRUD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="subwindows\InstructorCRUD.xaml.cs">
+      <DependentUpon>InstructorCRUD.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +85,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="subwindows\FitnessClassCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="subwindows\InstructorCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
