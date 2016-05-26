@@ -13,7 +13,7 @@ namespace FitnessLib.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201605251424368_nydb"; }
+            get { return "201605261212358_nydb"; }
         }
         
         string IMigrationMetadata.Source

@@ -52,7 +52,7 @@ else
             <td>@Html.DisplayName(item.Start.ToString())</td>
             <td>@Html.DisplayName(item.Discipline.Name)</td>
             <td>@Html.DisplayName(item.Instructor.Name)</td>
-            <td>Status undefined</td>
+            <td>@Html.ActionLink("Tilmeld", "Index", "Test", new { id=item.Id})</td>
         </tr>
     }
 </table>

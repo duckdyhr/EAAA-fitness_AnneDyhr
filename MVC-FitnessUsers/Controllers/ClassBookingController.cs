@@ -37,7 +37,7 @@ namespace MVC_FitnessUsers.Controllers
         //de eneste properties fra binding jeg er interesseret i er givet med som parametre i Bind attributten. (Så sendes hele listen af hold ikke igen...)
         public ActionResult FilterClasses([Bind(Include = "SelectedDiscipline, SelectedInstructor, SelectedDate")] ClassBookingViewModel model) 
         {
-            //Er property/binding validering gået godt:
+            //Er property/binding validering fra brugers side gået godt:
             if (!ModelState.IsValid)
             {
                 //Hvis input i formen ikke er valid. Giv mere sigende feedback i stedet...

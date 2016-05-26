@@ -61,5 +61,12 @@ namespace MVC_FitnessUsers.Service
 
             return model;
         }
+
+        //throw exception hvis userid not valid?
+        public User FindUser(string userid)
+        {
+            User result = db.Users.Find(userid);
+            return result;
+        }
     }
 }
