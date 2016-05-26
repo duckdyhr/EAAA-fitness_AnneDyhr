@@ -33,6 +33,13 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="text-warning">
+                <p>Der er opstået en fejl!!</p>
+                @Html.ValidationMessage("Error");
+            </div>
+        }
         <footer>
             <p>&copy; @DateTime.Now.Year - EAAA Fitness</p>
         </footer>

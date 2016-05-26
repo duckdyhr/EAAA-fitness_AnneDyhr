@@ -23,13 +23,28 @@ namespace MVC_FitnessUsers.Controllers
             return View();
         }
 
+        public ActionResult UserProfile(string userId)
+        {
+            if(userId == null || userId.Length== 0)
+            {
+                return RedirectToAction("LogIn");
+            }
+            var user = service.FindUser(userId);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
         [HttpPost]
         public ActionResult UserProfile(FormCollection col)
         {
             string userid = col["UserId"];
-            if (userid == null)
+            if (userid == null || userid.Length==0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ModelState.AddModelError("Error", "UserId is null eller length==0");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);   
             }
             User user = service.FindUser(userid);
             if(user == null)
@@ -37,6 +52,24 @@ namespace MVC_FitnessUsers.Controllers
                 return HttpNotFound();
             }
             return View(user);
+        }
+
+        //string userId, string classId
+        //Jeg opgiver.. Browser siger den ikke kan finde ressource Account/UnsubscribeFitnessClass
+        [ActionName("UnsubscribeFitnessClass")]
+        public ActionResult UserProfile()
+        {
+            string userId = "aa";
+            int cId = 1;
+            if(userId == null || userId.Length == 0 || cId == 0) //for int er 0 == null. Brug int? i stedet?
+            {
+                ModelState.AddModelError("Error", "UserId is null");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("LogIn", "Account");
+            }
+            User user = service.UnsubscribeUserFromClass(userId, cId);
+            //new { id = userId }
+            return View(User); //send user i stedet for id?    
         }
     }
 }

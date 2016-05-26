@@ -62,11 +62,39 @@ namespace MVC_FitnessUsers.Service
             return model;
         }
 
+        public List<FitnessClass> FilterFitnessClasses(Discipline selectedDiscipline, Instructor selectedInstructor, DateTime? selectedDate)
+        {
+            List<FitnessClass> result = new List<FitnessClass>();
+            var allClasses = db.Classes;
+            result = allClasses.Where(
+                c => c.Discipline==null || c.Discipline.Id == selectedDiscipline.Id)
+                .ToList();
+            
+            //books.Aggregate((agg, next) => next.Pages > agg.Pages ? next : agg).Dump("Good");
+            //sorter!
+            return result;
+        }
+
         //throw exception hvis userid not valid?
         public User FindUser(string userid)
         {
             User result = db.Users.Find(userid);
             return result;
+        }
+
+        public User UnsubscribeUserFromClass(string userId, int classId)
+        {
+            var user = db.Users.Find(userId);
+            if(user != null)
+            {
+                var tobedeleted = user.Classes.First(c => c.Id == classId);
+                if(tobedeleted != null)
+                {
+                    user.Classes.Remove(tobedeleted);
+                    db.SaveChanges();
+                }
+            }
+            return user;
         }
     }
 }
