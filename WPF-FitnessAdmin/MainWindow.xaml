@@ -112,8 +112,8 @@
                     
                 </DataGrid>
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
-                    <Button x:Name="btnAddClass">Ny</Button>
-                    <Button x:Name="btnDeleteClass">Slet</Button>
+                    <Button x:Name="btnAddClass" Click="btnAddClass_Click">Ny</Button>
+                    <Button x:Name="btnDeleteClass" Click="btnDeleteClass_Click">Slet</Button>
                     <Button x:Name="btnEditClass" Click="btnEditClass_Click">Rediger</Button>
                 </StackPanel>
             </Grid>

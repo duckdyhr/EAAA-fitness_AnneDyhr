@@ -42,30 +42,23 @@ namespace WPF_FitnessAdmin
 
         private void btnAddInstructor_Click(object sender, RoutedEventArgs e)
         {
-            ShowInstructorWindow(new Instructor(), WindowType.NewEntity);
+            var window = new InstructorCRUD(new Instructor(), WindowType.NewEntity);
+            window.ChangesMade += InstructorAdded;
+            window.Show();
         }
 
         private void btnDeleteInstructor_Click(object sender, RoutedEventArgs e)
         {
             var selected = lboxInstructors.SelectedItem as Instructor;
             service.DeleteInstrutor(selected);
-            UpdateModel();
+            model.Instructors.Remove(selected);
+            //UpdateModel();
         }
         private void btnEditInstructor_Click(object sender, RoutedEventArgs e)
         {
             Instructor selected = lboxInstructors.SelectedItem as Instructor;
-            ShowInstructorWindow(selected, WindowType.EditEntity);
-        }
-
-        private void btnEditClass_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void ShowInstructorWindow(Instructor instructor, WindowType type)
-        {
-            var window = new InstructorCRUD(instructor, type);
-            window.ChangesMade += UpdateModel;
+            var window = new InstructorCRUD(selected, WindowType.EditEntity);
+            window.ChangesMade += InstructorChanged;
             window.Show();
         }
 
@@ -79,6 +72,38 @@ namespace WPF_FitnessAdmin
         {
             this.model = service.GetFreshViewModel();
             test.Content = "instructors.count: " + model.Instructors.Count;
+        }
+
+        public void InstructorAdded(Instructor instructor)
+        {
+            model.Instructors.Add(instructor);
+        }
+
+        public void InstructorChanged(Instructor instructor)
+        {
+            var oldValue = model.Instructors.First(i => i.InstructorId == instructor.InstructorId);
+            model.Instructors.Remove(oldValue);
+            model.Instructors.Add(instructor);
+        }
+
+        private void btnAddClass_Click(object sender, RoutedEventArgs e)
+        {
+            FitnessClass fc = new FitnessClass();
+            ShowFitnessClassWindow(fc, WindowType.NewEntity);
+        }
+        private void btnEditClass_Click(object sender, RoutedEventArgs e)
+        {
+            FitnessClass selected = dgrdClasses.SelectedItem as FitnessClass;
+            ShowFitnessClassWindow(selected, WindowType.EditEntity);
+        }
+
+        private void btnDeleteClass_Click(object sender, RoutedEventArgs e)
+        {
+            NotYetImplemented();
+        }
+        private void NotYetImplemented()
+        {
+            MessageBox.Show("Not yet implemented");
         }
     }
 }

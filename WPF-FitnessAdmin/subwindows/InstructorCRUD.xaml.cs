@@ -21,7 +21,7 @@ namespace WPF_FitnessAdmin.subwindows
     /// </summary>
     public partial class InstructorCRUD : Window
     {
-        public delegate void ChangesMadeEventHandler();
+        public delegate void ChangesMadeEventHandler(Instructor instructor);
         public event ChangesMadeEventHandler ChangesMade;
 
         private Instructor instructor;
@@ -87,7 +87,7 @@ namespace WPF_FitnessAdmin.subwindows
                 this.Close();
             }
             //Er der subscribers?
-            ChangesMade?.Invoke();
+            ChangesMade?.Invoke(instructor);
         }
 
         private void btnAddDiscipline_Click(object sender, RoutedEventArgs e)
@@ -97,6 +97,7 @@ namespace WPF_FitnessAdmin.subwindows
             {
                 instructor.FitnessDiscipliner.Add(selected);
                 BindDisciplines();
+                lboxDisciplines.ItemsSource = instructor.FitnessDiscipliner; //da binding ikke er 2-way, må jeg gøre dette i stedet. Virker ikke...
             }
         }
 

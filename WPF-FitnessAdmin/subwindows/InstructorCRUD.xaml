@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_FitnessAdmin.subwindows"
         mc:Ignorable="d"
-        Title="InstructorCRUD" Height="300" Width="300" Loaded="Window_Loaded">
+        Title="InstructorCRUD" Height="400" Width="300" Loaded="Window_Loaded">
     <Grid x:Name="rootInstructor">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -31,6 +31,9 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Navn" Grid.Column="0" Grid.Row="0"/>
             <TextBox Text="{Binding Path=Name}" Grid.Column="1" Grid.Row="0"/>
@@ -44,8 +47,7 @@
         <ComboBox x:Name ="cmbDisciplines" Grid.Column="0" Grid.Row="3" DisplayMemberPath="Name"/>
         <Button x:Name="btnAddDiscipline" Grid.Column="1" Grid.Row="3" Click="btnAddDiscipline_Click">Tilføj disciplin</Button>
         <Button x:Name="btnDeleteDisciplin" Grid.Column="1" Grid.Row="4" Click="btnDeleteDisciplin_Click">Slet disciplin</Button>
-        <Button x:Name="btnGodkend" Grid.Column="1" Grid.Row="4" Click="btnGodkend_Click">Godkend</Button>
-        
+        <Button x:Name="btnGodkend" Grid.Column="0" Grid.Row="6" Click="btnGodkend_Click">Godkend</Button>
         <Label x:Name="test" Content="" Grid.Column="0" Grid.Row="5"/>
     </Grid>
 </Window>
