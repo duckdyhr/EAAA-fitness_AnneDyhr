@@ -38,8 +38,8 @@
             
                 <ListBox x:Name="lboxDiscipliner" Grid.Column="0" Grid.Row="0" Height="150" ItemsSource="{Binding Path=Disciplines}" DisplayMemberPath="Name"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
-                    <Button x:Name="btnAddDiscipline">Ny</Button>
-                    <Button x:Name="btnDeleteDiscpline">Slet</Button>
+                    <Button x:Name="btnAddDiscipline" Click="btnAddDiscipline_Click">Ny</Button>
+                    <Button x:Name="btnDeleteDiscpline" Click="btnDeleteDiscpline_Click">Slet</Button>
                 </StackPanel>
             </Grid>
         </GroupBox>
@@ -83,14 +83,14 @@
                 <DataGrid x:Name="dgrdClasses" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Height="200"
                           ItemsSource="{Binding Path=Classes}" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single">
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Dato">
+                        <DataGridTemplateColumn Header="Dato" CanUserSort="True" SortMemberPath="{Binding Path=Start}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=Start, StringFormat={}{0:dd MMM yyyy}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Tidspunkt">
+                        <DataGridTemplateColumn Header="Tidspunkt" CanUserSort="True">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=Start, StringFormat= {}{0:HH:mm}}"/>

@@ -23,6 +23,8 @@ namespace WPF_FitnessAdmin.subwindows
         private FitnessClass fitnessClass;
         private Service.Service service;
         private WindowType type;
+        public delegate void ChangesMadeEventHandler(FitnessClass fclass);
+        public event ChangesMadeEventHandler ChangesMade;
 
         public FitnessClassCRUD(FitnessClass fc, WindowType type)
         {
@@ -35,9 +37,38 @@ namespace WPF_FitnessAdmin.subwindows
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             rootFitnessClass.DataContext = fitnessClass;
+            cmbDisciplines.ItemsSource = service.GetAllDisciplines();
             cmbInstructor.ItemsSource = service.GetAllInstructors();
             cmbGym.ItemsSource = service.GetAllGyms();
-            lblGym.Content = "Sal (max " + fitnessClass.Gym.MaxCapacity + ")"; //binding skift farve?
+            string content = "Sal ";
+            if(fitnessClass.Gym != null)
+            {
+                content += "Sal (max " + fitnessClass.Gym.MaxCapacity + ")";
+            }
+            lblGym.Content = content; //binding skift farve?
+            if (type == WindowType.NewEntity)
+            {
+                this.Title = "Ny Fitnesstime";
+            }else
+            {
+                this.Title = "Rediger Fitnesstime";
+            }
+        }
+
+        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            if (type == WindowType.NewEntity)
+            {
+                //fitnessClass.Discipline = cmbDisciplines.SelectedItem as Discipline;
+                //fitnessClass.Instructor = cmbInstructor.SelectedItem as Instructor;
+                //fitnessClass.Gym = cmbGym.SelectedItem as Gym;
+                fitnessClass = service.AddFitnessClass(fitnessClass);
+            }else
+            {
+                fitnessClass = service.EditFitnessClass(fitnessClass);
+            }
+            this.Close();
+            ChangesMade?.Invoke(fitnessClass);
         }
     }
 }

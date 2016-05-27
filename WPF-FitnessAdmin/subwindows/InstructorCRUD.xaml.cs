@@ -21,8 +21,8 @@ namespace WPF_FitnessAdmin.subwindows
     /// </summary>
     public partial class InstructorCRUD : Window
     {
-        public delegate void ChangesMadeEventHandler(Instructor instructor);
-        public event ChangesMadeEventHandler ChangesMade;
+        public delegate void InstructorEventHandler(Instructor instructor);
+        public event InstructorEventHandler InstructorChangesMade;
 
         private Instructor instructor;
         private Service.Service service;
@@ -71,7 +71,6 @@ namespace WPF_FitnessAdmin.subwindows
             {
                 cmbDisciplines.ItemsSource = disciplines.Where(d => !instructor.FitnessDiscipliner.Contains(d));
             }
-            //Disciplines.Where(d => !instructor.FitnessDiscipliner.Contains(d));
             cmbDisciplines.SelectedIndex = 0;
         }
 
@@ -79,15 +78,15 @@ namespace WPF_FitnessAdmin.subwindows
         {
             if(type == WindowType.EditEntity)
             {
-                service.UpdateInstuctor(instructor);
+                instructor = service.UpdateInstuctor(instructor);
                 this.Close();
             }else
             {
-                service.AddInstructor(instructor);
+                instructor = service.AddInstructor(instructor);
                 this.Close();
+                //Er der subscribers?
+                InstructorChangesMade?.Invoke(instructor);
             }
-            //Er der subscribers?
-            ChangesMade?.Invoke(instructor);
         }
 
         private void btnAddDiscipline_Click(object sender, RoutedEventArgs e)
@@ -108,6 +107,7 @@ namespace WPF_FitnessAdmin.subwindows
             {
                 var tobedeleted = instructor.FitnessDiscipliner.First(fc => fc.Id == selected.Id);
                 instructor.FitnessDiscipliner.Remove(tobedeleted);
+                lboxDisciplines.ItemsSource = instructor.FitnessDiscipliner;
             }
         }
     }

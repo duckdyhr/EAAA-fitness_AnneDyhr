@@ -64,7 +64,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="converters\TimeConverter.cs" />
     <Compile Include="model\SessionViewModel.cs" />
     <Compile Include="Service\Service.cs" />
     <Compile Include="subwindows\FitnessClassCRUD.xaml.cs">

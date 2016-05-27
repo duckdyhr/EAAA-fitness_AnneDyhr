@@ -26,7 +26,7 @@ namespace WPF_FitnessAdmin
         private Service.Service service;
         private SessionViewModel model;
 
-        //delegate onclose -> saveChanges/rollback
+        //delegate onclose -> saveChanges/rollback?
         public MainWindow()
         {
             InitializeComponent();
@@ -36,14 +36,13 @@ namespace WPF_FitnessAdmin
         {
             service = Service.Service.Instance;
             model = service.GetFreshViewModel();
-            test.Content = "instructors.count: " + model.Instructors.Count;
             root.DataContext = model;
         }
 
         private void btnAddInstructor_Click(object sender, RoutedEventArgs e)
         {
             var window = new InstructorCRUD(new Instructor(), WindowType.NewEntity);
-            window.ChangesMade += InstructorAdded;
+            window.InstructorChangesMade += InstructorAdded;
             window.Show();
         }
 
@@ -54,24 +53,18 @@ namespace WPF_FitnessAdmin
             model.Instructors.Remove(selected);
             //UpdateModel();
         }
+
         private void btnEditInstructor_Click(object sender, RoutedEventArgs e)
         {
             Instructor selected = lboxInstructors.SelectedItem as Instructor;
             var window = new InstructorCRUD(selected, WindowType.EditEntity);
-            window.ChangesMade += InstructorChanged;
+            window.InstructorChangesMade += InstructorEdited;
             window.Show();
         }
-
-        private void ShowFitnessClassWindow(FitnessClass fc, WindowType type)
-        {
-            var window = new FitnessClassCRUD(fc, type);
-            window.Show();
-        }
-
+        
         public void UpdateModel()
         {
             this.model = service.GetFreshViewModel();
-            test.Content = "instructors.count: " + model.Instructors.Count;
         }
 
         public void InstructorAdded(Instructor instructor)
@@ -79,31 +72,63 @@ namespace WPF_FitnessAdmin
             model.Instructors.Add(instructor);
         }
 
-        public void InstructorChanged(Instructor instructor)
+        public void InstructorEdited(Instructor instructor)
         {
             var oldValue = model.Instructors.First(i => i.InstructorId == instructor.InstructorId);
             model.Instructors.Remove(oldValue);
             model.Instructors.Add(instructor);
         }
 
+        public void FitnessClassAdded(FitnessClass fclass)
+        {
+            model.Classes.Add(fclass);
+        }
+        public void FitnessClassEdited(FitnessClass fclass)
+        {
+            var oldValue = model.Classes.First(fc => fc.Id == fclass.Id);
+            model.Classes.Remove(oldValue);
+            model.Classes.Add(fclass);
+        }
+
         private void btnAddClass_Click(object sender, RoutedEventArgs e)
         {
             FitnessClass fc = new FitnessClass();
-            ShowFitnessClassWindow(fc, WindowType.NewEntity);
+            var window = new FitnessClassCRUD(fc, WindowType.NewEntity);
+            window.ChangesMade += FitnessClassAdded;
+            window.Show();
         }
+
         private void btnEditClass_Click(object sender, RoutedEventArgs e)
         {
             FitnessClass selected = dgrdClasses.SelectedItem as FitnessClass;
-            ShowFitnessClassWindow(selected, WindowType.EditEntity);
+            var window = new FitnessClassCRUD(selected, WindowType.EditEntity);
+            window.ChangesMade += FitnessClassEdited;
+            window.Show();
         }
 
         private void btnDeleteClass_Click(object sender, RoutedEventArgs e)
         {
-            NotYetImplemented();
+            FitnessClass selected = dgrdClasses.SelectedItem as FitnessClass;
+            bool result = service.DeleteFitnessClass(selected);
+            if (result)
+            {
+                model.Classes.Remove(selected);
+            }
         }
+
         private void NotYetImplemented()
         {
             MessageBox.Show("Not yet implemented");
+        }
+
+        private void btnAddDiscipline_Click(object sender, RoutedEventArgs e)
+        {
+            NotYetImplemented();
+        }
+
+        private void btnDeleteDiscpline_Click(object sender, RoutedEventArgs e)
+        {
+            NotYetImplemented();
         }
     }
 }

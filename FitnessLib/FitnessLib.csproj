@@ -66,9 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201605261212358_nydb.cs" />
-    <Compile Include="Migrations\201605261212358_nydb.Designer.cs">
-      <DependentUpon>201605261212358_nydb.cs</DependentUpon>
+    <Compile Include="Migrations\201605271216094_nydb.cs" />
+    <Compile Include="Migrations\201605271216094_nydb.Designer.cs">
+      <DependentUpon>201605271216094_nydb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Discipline.cs" />
@@ -76,7 +76,6 @@
     <Compile Include="Model\Gym.cs" />
     <Compile Include="Model\Instructor.cs" />
     <Compile Include="Model\Person.cs" />
-    <Compile Include="Model\TimeOfClass.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\FitnessContext.cs" />
@@ -85,6 +84,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Data\Fitness.db" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -100,17 +100,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\FitnessDb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\FitnessDb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>FitnessDb.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605261212358_nydb.resx">
-      <DependentUpon>201605261212358_nydb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605271216094_nydb.resx">
+      <DependentUpon>201605271216094_nydb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

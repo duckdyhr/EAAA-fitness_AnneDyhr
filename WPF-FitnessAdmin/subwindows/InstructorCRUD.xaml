@@ -44,10 +44,13 @@
         </Grid>
         <Label Content="Discipliner" Grid.Column="0" Grid.Row="1"/>
         <ListBox x:Name="lboxDisciplines" ItemsSource="{Binding Path=FitnessDiscipliner}" Height="100" DisplayMemberPath="Name" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name ="cmbDisciplines" Grid.Column="0" Grid.Row="3" DisplayMemberPath="Name"/>
-        <Button x:Name="btnAddDiscipline" Grid.Column="1" Grid.Row="3" Click="btnAddDiscipline_Click">Tilføj disciplin</Button>
-        <Button x:Name="btnDeleteDisciplin" Grid.Column="1" Grid.Row="4" Click="btnDeleteDisciplin_Click">Slet disciplin</Button>
-        <Button x:Name="btnGodkend" Grid.Column="0" Grid.Row="6" Click="btnGodkend_Click">Godkend</Button>
-        <Label x:Name="test" Content="" Grid.Column="0" Grid.Row="5"/>
+        <DockPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+            <ComboBox x:Name ="cmbDisciplines" Grid.Column="0" Grid.Row="3" DisplayMemberPath="Name" Width="145"/>
+            <Button x:Name="btnAddDiscipline" Grid.Column="1" Grid.Row="3" Click="btnAddDiscipline_Click">Tilføj disciplin</Button>
+        </DockPanel>
+        <Button x:Name="btnDeleteDisciplin" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Click="btnDeleteDisciplin_Click" Margin="0,0,0,38">Slet disciplin</Button>
+        <DockPanel Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Margin="0, 40, 0, 0">
+            <Button x:Name="btnGodkend" Grid.Column="0" Grid.Row="6" Click="btnGodkend_Click">Godkend</Button>
+        </DockPanel>
     </Grid>
 </Window>

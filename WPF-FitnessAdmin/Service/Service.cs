@@ -3,6 +3,7 @@ using EAAA_fitness_lib.Storage;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,30 +46,20 @@ namespace WPF_FitnessAdmin.Service
             return model;
         }
 
-        public SessionViewModel UpdateViewModel(SessionViewModel model)
-        {
-            model.Disciplines = new ObservableCollection<Discipline>(_db.Disciplines.ToList());
-            //model.Instructors = new ObservableCollection<Instructor>(_db.Instructors.ToList());
-            model.Instructors.Clear();
-            _db.Instructors.ToList().ForEach(i => model.Instructors.Add(i)); //Aktiverer 2-way binding.. forhåbentligt...
-
-            model.Classes = new ObservableCollection<FitnessClass>(_db.Classes.ToList());
-            return model;
-        }
-
         public List<Discipline> GetAllDisciplines()
         {
             return _db.Disciplines.ToList();
-        }
-        public void AddInstructor(Instructor instructor)
-        {
-            _db.Instructors.Add(instructor);
-            _db.SaveChanges();
         }
 
         public List<Instructor> GetAllInstructors()
         {
             return _db.Instructors.ToList();
+        }
+        public Instructor AddInstructor(Instructor instructor)
+        {
+            var result =_db.Instructors.Add(instructor);
+            _db.SaveChanges();
+            return result;
         }
         public void DeleteInstrutor(Instructor instructor)
         {
@@ -76,26 +67,59 @@ namespace WPF_FitnessAdmin.Service
             _db.SaveChanges();
         }
         //Burde update istedet for delete og inserte...
-        public bool UpdateInstuctor(Instructor instructor)
+        public Instructor UpdateInstuctor(Instructor instructor)
         {
+            Instructor result = null;
             if(instructor != null)
             {
                 var oldvalue = _db.Instructors.First(i => i.InstructorId == instructor.InstructorId);
                 _db.Instructors.Remove(oldvalue);
+                _db.Entry(oldvalue).State = EntityState.Deleted;
                 try {
-                    _db.Instructors.Add(instructor);
+                    result = _db.Instructors.Add(instructor);
+                    _db.Entry(instructor).State = EntityState.Added;
                     _db.SaveChanges();
-                    return true;
+
                 }
                 catch (Exception e)
                 {
                     //gør noget meaningsfuldt...
-                    return false;
                 }
             }
-            return false;
+            return result;
         }
 
+        public FitnessClass AddFitnessClass(FitnessClass fclass)
+        {
+            FitnessClass result = null;
+            if(fclass != null)
+            {
+                result = _db.Classes.Add(fclass);
+                _db.Entry(fclass).State = EntityState.Added;
+                _db.SaveChanges();
+            }
+            return result;
+        }
+
+        public FitnessClass EditFitnessClass(FitnessClass fclass)
+        {
+            FitnessClass result = null;
+            if(fclass != null)
+            {
+                var oldValue = _db.Classes.First(fc => fc.Id == fclass.Id);
+                _db.Classes.Remove(oldValue);
+                result = _db.Classes.Add(fclass);
+                _db.Entry(result).State = EntityState.Added;
+            }
+            return result;
+        }
+
+        public bool DeleteFitnessClass(FitnessClass fclass)
+        {
+            var tobedeleted = _db.Classes.Find(fclass.Id);
+            _db.Classes.Remove(tobedeleted);
+            return tobedeleted!=null;
+        }
         public List<Gym> GetAllGyms()
         {
             return _db.Gyms.ToList();
