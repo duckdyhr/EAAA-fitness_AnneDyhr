@@ -1,13 +1,20 @@
-﻿@model EAAA_fitness_lib.Model.User
-<h4>Profiloplysninger</h4>
+﻿@model MVC_FitnessUsers.Models.FitnessViewModel
+
+<h1>Profiloplysninger</h1>
 <hr />
-<div class="panel-group">
-    @Html.Label("Navn", htmlAttributes: new { @class = "label" })
-    @Html.Label(@Model.Name, new { @class= "label"})
+<div class="form-horizontal">
+    @Html.Label("Navn")
+    @Html.DisplayFor(m => Model.User.Name)
+</div>  
+@if (Model == null)
+{
+    <p class="text-danger">User is null!!</p>
+}else
+{
+    <p class="text-danger">User is not null. Id er @Model.User.UserId</p>
+}
 
-</div>
-
-@*Repetiv kode - smid ud i partial view?*@
+<h2>Tilmeldte hold</h2>
 <div class="form-group">
     <table class="table">
         <tr>
@@ -16,16 +23,53 @@
             <th>Instruktør</th>
             <th>Frameld</th>
         </tr>
-        @foreach (var item in Model.Classes)
+        @foreach (var item in Model.User.Classes)
         {
             <tr>
                 <td>@Html.DisplayName(item.Start.ToString())</td>
                 <td>@Html.DisplayName(item.Discipline.Name)</td>
                 <td>@Html.DisplayName(item.Instructor.Name)</td>
-                <td>@Html.ActionLink("Frameld", "UserProfile", "Account", new { userId = Model.UserId})</td>
+                <td>@Html.ActionLink("Frameld", "UserProfile", "Account", new { userId = Model.User.UserId })</td>
             </tr>
         }
     </table>
-     new { userId = Model.UserId, classId=item.Id }
 </div>
-@Html.HiddenFor(model => model.UserId)
+
+<h2>Kommende hold</h2>
+@if (Model.User != null)
+{
+    <h4>Vælg søgekriterier</h4>
+
+    using (Html.BeginForm("FilterClasses", "Account"))
+    {
+        <div class="row">
+            <div class="col-md-3 form-group">
+                @Html.LabelFor(m => m.Disciplines) <br />
+                @Html.DropDownListFor(m => m.SelectedDiscipline, new SelectList(Model.Disciplines, "Id", "Name", Model.SelectedDiscipline), new { @class = "form-control" })
+                
+            </div>
+            <div class="col-md-3 form-group">
+                @Html.LabelFor(m => m.Instructors)
+                @Html.DropDownListFor(m => m.SelectedInstructor, new SelectList(Model.Instructors, "InstructorId", "Name", Model.SelectedInstructor), new { @class = "form-control" })
+                <br />
+            </div>
+            <div class="col-md-3 form-group">
+                @Html.LabelFor(m => m.SelectedDate)<br />
+                @Html.TextBoxFor(m => m.SelectedDate, new { type = "date", @class = "form-control"})
+            </div>
+            <div class="col-md-3 form-group">
+                @Html.Label("")<br />
+                <input class="btn btn-info form-control" type="submit" name="submit" value="Søg hold" />
+            </div>
+        </div>
+    }
+
+    <div id="classesList">
+        @Html.Partial("_FitnessClasses", Model.NotSubscribedClasses())
+    </div>
+}
+else
+{
+    <p>Du er ikke logget ind, så det er ikke muligt at tilmelde sig nye hold</p>
+}
+<hr />

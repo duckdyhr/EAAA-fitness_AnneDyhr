@@ -1,0 +1,19 @@
+﻿@model IEnumerable<EAAA_fitness_lib.Model.FitnessClass>
+
+<table class="table">
+    <tr>
+        <th>Tidspunkt</th>
+        <th>Disciplin</th>
+        <th>Instruktør</th>
+        <th>Status</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayName(item.Start.ToString())</td>
+            <td>@Html.DisplayName(item.Discipline.Name)</td>
+            <td>@Html.DisplayName(item.Instructor.Name)</td>
+            <td>@Html.ActionLink("Tilmeld", "SubscribeToClass", new { id = item.Id })</td>
+        </tr>
+    }
+</table>

@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessLib", "FitnessLib\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessLib_Test", "TestEF\FitnessLib_Test.csproj", "{688BB725-E3B2-40C4-8C38-31F9830F5B6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCFull-FitnessUsers", "FitnessUsers\MVCFull-FitnessUsers.csproj", "{444C6640-B237-43C7-84EA-512F3F4498B1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC-FitnessUsers", "MVC-FitnessUsers\MVC-FitnessUsers.csproj", "{7D158D70-9340-46B9-8EDB-3ADC0090B797}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-FitnessAdmin", "WPF-FitnessAdmin\WPF-FitnessAdmin.csproj", "{C57931F3-8812-4CFB-B5FF-8BFED2E06FD2}"
@@ -27,10 +25,6 @@ Global
 		{688BB725-E3B2-40C4-8C38-31F9830F5B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{688BB725-E3B2-40C4-8C38-31F9830F5B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{688BB725-E3B2-40C4-8C38-31F9830F5B6C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{444C6640-B237-43C7-84EA-512F3F4498B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{444C6640-B237-43C7-84EA-512F3F4498B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{444C6640-B237-43C7-84EA-512F3F4498B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{444C6640-B237-43C7-84EA-512F3F4498B1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D158D70-9340-46B9-8EDB-3ADC0090B797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D158D70-9340-46B9-8EDB-3ADC0090B797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D158D70-9340-46B9-8EDB-3ADC0090B797}.Release|Any CPU.ActiveCfg = Release|Any CPU

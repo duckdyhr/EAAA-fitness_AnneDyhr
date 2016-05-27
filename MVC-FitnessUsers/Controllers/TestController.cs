@@ -13,9 +13,9 @@ namespace MVC_FitnessUsers.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            var model = service.LoadClassBookingViewModel();
+            var model = service.LoadFitnessViewModel();
             model.Classes = service.GetAllFitnessClasses();
-            model.LblTest = "Tekst property fra ClassBookingViewModel";
+            model.LblTest = "Tekst property fra FitnessViewModel";
             return View(model);
         }
     }
